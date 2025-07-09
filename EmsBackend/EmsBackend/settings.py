@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-b=9u5=)pw7&#9k97ksp9mrw6yysmhqkj3#@7qh2te!*bthlabh
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['54.66.39.8', 'localhost', '127.0.0.1', 'ec2-54-66-39-8.ap-southeast-2.compute.amazonaws.com']
 
 # Logging configuration
 LOGGING = {
@@ -88,6 +88,8 @@ CORS_ALLOW_CREDENTIALS = True
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
+    "http://54.66.39.8",
+    "http://ec2-54-66-39-8.ap-southeast-2.compute.amazonaws.com"
 ]
 
 ROOT_URLCONF = 'EmsBackend.urls'
@@ -160,7 +162,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATIC_ROOT = Path(BASE_DIR / 'static')
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = Path(BASE_DIR / 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
