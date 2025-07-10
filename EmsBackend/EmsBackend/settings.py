@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-b=9u5=)pw7&#9k97ksp9mrw6yysmhqkj3#@7qh2te!*bthlabh'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['54.66.39.8', 'localhost', '127.0.0.1', 'ec2-54-66-39-8.ap-southeast-2.compute.amazonaws.com']
+ALLOWED_HOSTS = ['ec2-54-66-39-8.ap-southeast-2.compute.amazonaws.com', '54.66.39.8']
 
 # Logging configuration
 LOGGING = {
@@ -88,8 +88,7 @@ CORS_ALLOW_CREDENTIALS = True
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
-    "http://54.66.39.8",
-    "http://ec2-54-66-39-8.ap-southeast-2.compute.amazonaws.com"
+    "https://ec2-54-66-39-8.ap-southeast-2.compute.amazonaws.com",
 ]
 
 ROOT_URLCONF = 'EmsBackend.urls'
@@ -120,10 +119,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'employeemanagement',
-        'USER': 'root',
-        'PASSWORD': 'adminengenia',
-        'HOST':'localhost',
-        'PORT':'3306',
+        'USER': 'aws_user',
+        'PASSWORD': 'aws_password',
+        'HOST': 'aws-rds-endpoint',
+        'PORT': '3306',
     }
 }
 
@@ -163,10 +162,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = Path(BASE_DIR / 'static')
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = Path(BASE_DIR / 'media')
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
